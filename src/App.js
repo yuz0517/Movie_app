@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import "./App.css"
+import { HashRouter, Route } from 'react-router-dom';
+
+import Home from "./routes/Home";
+import About from "./routes/About"; //About.js가 필요.
+import Navigation from "./components/Navigation";
+import Detail from "./routes/Detail";
+
+function App(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      
+        <Navigation />
+        <Route path="/movie-detail" component={Detail} />
+        <Route path="/" exact={true} component={Home}/>
+        <Route path="/about" component={About}/>
+      
+    </HashRouter>
   );
 }
 
